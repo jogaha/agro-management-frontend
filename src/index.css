@@ -1,0 +1,80 @@
+/* reset.css */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Remove border on images inside links */
+a img {
+  border: none;
+}
+
+/* Reset heading margins */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.5rem;
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+/* Reset blockquote style */
+blockquote {
+  quotes: none;
+  margin: 0;
+}
+
+/* Reset button styling */
+button {
+  background: none;
+  padding: 0;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+/* Reset anchor styling */
+a {
+  text-decoration: none;
+  color: inherit;
+}
