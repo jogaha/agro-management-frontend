@@ -1,9 +1,9 @@
 import React from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io";
 import * as RiIcons from "react-icons/ri";
-import * as MdIcons from "react-icons/md";
+import * as HiIcons from "react-icons/hi2";
+import * as GiIcons from "react-icons/gi";
 
 export const SidebarData = [
   {
@@ -13,9 +13,27 @@ export const SidebarData = [
   },
   {
     title: "Embarques",
-    path: "/remision",
+    path: "/remision/",
     icon: <FaIcons.FaTrailer />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
+
+    subNav: [
+      {
+        title: "Crear Remision",
+        path: "/remision/crear",
+        icon: <HiIcons.HiDocumentPlus />,
+      },
+      {
+        title: "Clientes",
+        path: "/remision/clientes",
+        icon: <HiIcons.HiMiniBuildingOffice2 />,
+      },
+      {
+        title: "Productos",
+        path: "/remision/productos",
+        icon: <GiIcons.GiFruiting />,
+      },
+    ],
   },
 ];

@@ -5,6 +5,7 @@ import Clientes from "./pages/Clientes";
 import Productos from "./pages/Productos";
 import Remision from "./pages/Remision";
 import Home from "./pages/Home";
+import SidebarMenu from "./components/navegacion/SidebarMenu";
 
 function App() {
   return (

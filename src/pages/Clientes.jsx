@@ -22,9 +22,13 @@ const Clientes = () => {
       console.error("Error obteniendo los datos de los clientes", error);
     }
   };
-
+  const btnText = mostrarForm ? "Nuevo Cliente" : "Cancelar";
   const toggleForm = () => {
     setMostrarForm(!mostrarForm);
+    if (btnText === "Nuevo Cliente") {
+      setEditingItem(null);
+      setIsEditing(false);
+    }
   };
 
   const addCliente = async (values) => {
@@ -32,7 +36,7 @@ const Clientes = () => {
       if (isEditing) {
         await updateData(`${endpoints.urlClients}${editingItem.id}/`, values);
         setEditingItem(null);
-        isEditing(false);
+        setIsEditing(false);
       } else {
         await postData(endpoints.urlClients, values);
       }

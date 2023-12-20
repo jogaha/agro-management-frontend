@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import SidebarData from "./SidebarData";
+import { SidebarData } from "./SidebarData";
 import SubMenu from "./SubMenu";
 import { IconContext } from "react-icons/lib";
 
@@ -24,7 +24,9 @@ const NavIcon = styled(Link)`
   align-items: center;
 `;
 
-const SidebarNav = styled.nav`
+const SidebarNav = styled.nav.attrs((props) => ({
+  sidebar: props.sidebar ? "0" : "-100%",
+}))`
   background: #15171c;
   width: 250px;
   height: 100vh;
@@ -32,7 +34,7 @@ const SidebarNav = styled.nav`
   justify-content: center;
   position: fixed;
   top: 0;
-  left: ${({ sidebar }) => (sidebar ? "0" : "-100%")};
+  left: ${({ sidebar }) => sidebar};
   transition: 350ms;
   z-index: 10;
 `;
@@ -43,9 +45,26 @@ const SidebarWrap = styled.div`
 
 const SidebarMenu = () => {
   const [sidebar, setSidebar] = useState(false);
+
   const showSidebar = () => {
     setSidebar(!sidebar);
   };
+
+  const sidebarRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
+        setSidebar(false);
+      }
+    };
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
@@ -54,7 +73,7 @@ const SidebarMenu = () => {
             <FaIcons.FaBars onClick={showSidebar} />
           </NavIcon>
           <h1
-            style={{ textAlign: "center", marginLeft: "200px", color: "black" }}
+            style={{ textAlign: "center", marginLeft: "200px", color: "#FFF" }}
           >
             Agro Management
           </h1>
