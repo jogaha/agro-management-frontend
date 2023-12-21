@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { getData, postData, deleteData, updateData } from "../utils/request";
-import { endpoints } from "../utils/enpoints";
 
 const useDatos = (baseUrl, sortField = "id") => {
   const [data, setData] = useState([]);
@@ -19,16 +18,15 @@ const useDatos = (baseUrl, sortField = "id") => {
 
   const toggleForm = () => {
     setShowForm(!showForm);
-    if (!showForm) {
-      setEditingItem(null);
-      setIsEditing(false);
-    }
   };
   const performCrudOperation = async (values, operation, itemId = null) => {
+    console.log(operation, itemId)
     try {
+      console.log(operation, itemId)
       switch (operation) {
         case "add":
           await postData(baseUrl, values);
+          
           break;
         case "update":
           await updateData(`${baseUrl}${itemId}/`, values);
@@ -56,7 +54,10 @@ const useDatos = (baseUrl, sortField = "id") => {
     editingItem,
     isEditing,
     toggleForm,
-    performCrudOperation: (values, operation, itemId) => performCrudOperation(),
+    performCrudOperation,
+    reloadData,
+    setEditingItem,
+    setIsEditing
   };
 };
 

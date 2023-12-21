@@ -2,8 +2,8 @@ import React from "react";
 import Swal from "sweetalert2";
 
 const TablaCliente = ({
-  deleteCliente,
-  dataClientes,
+  deleteItem,
+  data,
   setEditingItem,
   setIsEditing,
   toggleForm,
@@ -27,7 +27,7 @@ const TablaCliente = ({
       });
 
       if (result.isConfirmed) {
-        await deleteCliente(id);
+        await deleteItem(null,"delete",id);
 
         Swal.fire({
           title: "Eliminado!",
@@ -49,7 +49,7 @@ const TablaCliente = ({
   return (
     <div>
       <h2>Registros</h2>
-      {dataClientes.length === 0 ? (
+      {data.length === 0 ? (
         <h2>No hay datos!</h2>
       ) : (
         <table className="table table-sm table-hover">
@@ -68,7 +68,7 @@ const TablaCliente = ({
             </tr>
           </thead>
           <tbody>
-            {dataClientes.map((item) => (
+            {data.map((item) => (
               <tr key={item?.id} className="text-center">
                 <td>{item?.id}</td>
                 <td>{item?.name}</td>

@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
 
+
 const validationSchema = Yup.object({
   name: Yup.string().required("Campo obligatorio"),
   address: Yup.string().required("Campo obligatorio"),
@@ -14,7 +15,7 @@ const validationSchema = Yup.object({
   country: Yup.string().required("Campo obligatorio"),
 });
 
-const FormCliente = ({ addCliente, isEditing, editingItem, toggleForm }) => {
+const FormCliente = ({ performCrudOperation,isEditing, editingItem, toggleForm,reloadData }) => {
   const initialValues = isEditing
     ? editingItem
     : {
@@ -36,9 +37,14 @@ const FormCliente = ({ addCliente, isEditing, editingItem, toggleForm }) => {
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
       try {
-        await addCliente(values);
+        if(isEditing){
+          await performCrudOperation(values,"update",editingItem.id)
+        } else{
+          await performCrudOperation(values,"add");
+        }
         resetForm();
         toggleForm();
+        reloadData()
         Swal.fire({
           position: "top-end",
           icon: "success",

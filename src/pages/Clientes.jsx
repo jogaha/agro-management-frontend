@@ -12,9 +12,18 @@ const Clientes = () => {
     isEditing,
     toggleForm,
     performCrudOperation,
+    setEditingItem,
+    setIsEditing,
+    reloadData,
   } = useDatos(endpoints.urlClients);
 
-  const btnText = showForm ? "Nuevo Cliente" : "Cancelar";
+  const btnText = showForm ? "Cancelar" : "Nuevo Cliente";
+
+  const handleNuevoCliente = ()=>{
+    setEditingItem(null)
+    setIsEditing(false)
+    toggleForm()
+  }
 
   return (
     <div className="container text-center">
@@ -26,17 +35,19 @@ const Clientes = () => {
         reloadData={performCrudOperation}
         deleteItem={performCrudOperation}
         toggleForm={toggleForm}
-        setEditingItem={set}
+        setEditingItem={setEditingItem}
+        setIsEditing={setIsEditing}
       />
-      <button className="btn btn-primary my-4" onClick={toggleForm}>
-        {mostrarForm ? "Cancelar" : "Nuevo Cliente"}
+      <button className="btn btn-primary my-4" onClick={handleNuevoCliente}>
+        {btnText}
       </button>
-      {mostrarForm && (
+      {showForm && (
         <FormCliente
-          addCliente={addCliente}
+          performCrudOperation={performCrudOperation}
           editingItem={editingItem}
           isEditing={isEditing}
           toggleForm={toggleForm}
+          reloadData={reloadData}
         />
       )}
     </div>
