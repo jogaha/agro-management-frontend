@@ -13,7 +13,7 @@ export const SidebarData = [
   },
   {
     title: "Embarques",
-    path: "/remision/",
+    path: "/",
     icon: <FaIcons.FaTrailer />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,

@@ -17,6 +17,8 @@ export const getData = async (url) => {
 
 export const postData = async (url, values) => {
   try {
+    console.log(`URL: ${url} objeto: ${values}`)
+    console.log(values)
     await axios.post(url, values);
   } catch (error) {
     console.error("Error en la operacion post: ", error);

@@ -13,7 +13,7 @@ function App() {
       <SidebarMenu />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/remision/" element={<Remision />} />
+        <Route path="/remision/crear" element={<Remision />} />
         <Route path="/remision/clientes" element={<Clientes />} />
         <Route path="/remision/productos" element={<Productos />} />
       </Routes>

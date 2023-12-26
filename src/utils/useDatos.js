@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getData, postData, deleteData, updateData } from "../utils/request";
+import { BASE_URL } from "./enpoints";
 
 const useDatos = (baseUrl, sortField = "id") => {
   const [data, setData] = useState([]);
@@ -20,9 +21,8 @@ const useDatos = (baseUrl, sortField = "id") => {
     setShowForm(!showForm);
   };
   const performCrudOperation = async (values, operation, itemId = null) => {
-    console.log(operation, itemId)
+
     try {
-      console.log(operation, itemId)
       switch (operation) {
         case "add":
           await postData(baseUrl, values);
